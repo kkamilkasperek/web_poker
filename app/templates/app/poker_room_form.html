@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>Name: {{ form.name }}</p>
+        <p id="checkbox"> Is private: {{ form.is_private }}</p>
+        <p id="password" style="display: none">Password: {{ form.password }}</p>
+        <button type="submit">Create room</button>
+    </form>
+    <script>
+        const checkbox = document.getElementById("checkbox")
+        const password = document.getElementById("password")
+        checkbox.addEventListener("change", () => {
+            if (password.style.display === "none") {
+                password.style.display = "block"
+            }
+            else password.style.display = "none"
+        })
+    </script>
+{% endblock %}

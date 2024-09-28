@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <h2>Poker rooms</h2>
+    <a href="{% url 'poker-form' %}">Create room</a>
+    {% for room in rooms %}
+    	<div style="border: 1px solid black">
+            <h4>Room {{ room.name }}</h4>
+            {% if room.is_private %} <span>Private</span> {% endif %}
+            <a href="{% url 'poker-room' room.id %}">Go to</a>
+        </div>
+    {% endfor %}
+
+{% endblock %}

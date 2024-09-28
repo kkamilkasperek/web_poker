@@ -1,0 +1,123 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <h3>This is room called {{ room.name }}</h3>
+    {% if messages %} {{ messages }} {% endif %}
+    {% if is_participant %}
+        <a href="{% url 'leave-poker' room.id %}" onclick="leaveRoom()">Opuść</a>
+    {% else %}
+        <a href="{% url 'join-poker' room.id %}" id="join-poker">Dołącz</a>
+    {% endif %}
+    <br>
+    {% if is_participant %}
+        <div class="messages">
+            <p>You have 30 seconds to click this button</p>
+            <button id="button" onclick="clickButton()">Click me</button>
+            <div id="timer"></div>
+        </div>
+    {% endif %}
+    <div class="poker-table">
+        {% for position in positions %}
+            <div class="seat_{{ position }}">
+                <p>{{ position }}:</p>
+                {% for participant in participants %}
+                    {% if participant.position == position %}
+                        <span>{{ participant.user.username }}</span>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+{#    {% for participant in participants %}#}
+{#        <span>{{ participant.username }}</span> <br>#}
+{#    {% endfor %}#}
+    <script>
+        let clickCounter = 0
+        let ws
+        const createWS = () => {
+            ws = new WebSocket("ws://{{ request.get_host }}/ws/poker-room/{{ room.id }}")
+            ws.onmessage = (e) => {
+                const data = JSON.parse(e.data)
+                console.log(data)
+                const message = data['message']
+                if (message === 'refresh') {
+                    window.location.reload()
+                }
+                else if (message === 'remove_user') {
+                    const position = data['position']
+                    const seat_span = document.querySelector(`.seat_${position} span`)
+                    seat_span.remove()
+                }
+                else if (message === 'add_user') {
+                    const position = data['position']
+                    const username = data['username']
+                    const seat = document.querySelector(`.seat_${position}`)
+                    if (!seat.querySelector('span')) {
+                        const span = document.createElement('span')
+                        span.innerHTML = username
+                        seat.appendChild(span)
+                    }
+                }
+
+                else if (message) {
+                    if (clickCounter) {
+                        const timerElement = document.getElementById('timer')
+                        timerElement.style.display = 'none'
+                    }
+                    const messageContainer = document.querySelector('.messages p')
+                    messageContainer.innerHTML = message
+                    {#const pokerTable = document.querySelector('.poker-table')#}
+                    {#pokerTable.insertBefore(messageContainer, pokerTable.firstChild)#}
+                }
+            }
+            startTimer(30)
+        }
+
+        const leaveRoom = () => {
+            ws.send(JSON.stringify({'message': 'leave_room'}))
+        }
+
+        const clickButton = () => {
+            clickCounter++
+            ws.send(JSON.stringify(({
+                'message': 'You clicked the button',
+                'counter': clickCounter
+            })))
+        }
+
+        const startTimer = (duration) => {
+            let timer = duration
+            const timerElement = document.getElementById('timer')
+            timerElement.innerHTML = `${timer} seconds left to click the button`
+            const timerInterval = setInterval(() => {
+                timer--
+                timerElement.innerHTML = `${timer} seconds left to click the button`
+                if (timer <= 0) {
+                    clearInterval(timerInterval)
+                }
+            }, 1000)
+        }
+
+        document.addEventListener("DOMContentLoaded", (event) => {
+            {% if is_participant %}
+                createWS()
+            {% else %}
+                document.getElementById('join-poker').addEventListener('click', createWS)
+            {% endif %}
+        })
+
+        {#const joinPoker = async (e) => {#}
+        {#    await e.preventDefault()#}
+        {#    try {#}
+        {#        const response = await fetch(e.target.href, {#}
+        {#            method: "POST",#}
+        {#            headers: {#}
+        {#            'X-CSRFToken': '{{ csrf_token }}'#}
+        {#            }#}
+        {#        })#}
+        {#    } catch (e) {#}
+        {#        console.error(e)#}
+        {#    }#}
+        {#    await createWS()#}
+    </script>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <h1>Blog's</h1>
+    <a href="{% url 'blog_form' %}">Create a new blog</a>
+    {% if user.is_authenticated %}
+    <input type="checkbox" id="checkmark" name="checkmark" onclick="myBlogs()">
+    <label for="checkmark">Show only my blogs</label>
+    {% endif %}
+    <ul class=blog-list">
+    {% for blog in blogs %}
+        <li id="blog-item" data-user="{{ blog.user.id }}">
+            <a href="{% url 'blog' blog.id %}"><h3>{{ blog.title }}</h3></a>
+            {% if user == blog.user %}
+            <a href="{% url 'blog-edit' blog.id %}">Edit</a> <a href="{% url 'blog-delete' blog.id %}">Delete</a>
+            {% endif %}
+            <p>Short description</p>
+        </li>
+    {% endfor %}
+    </ul>
+    <script>
+        const myBlogs = () => {
+            const checkmark = document.getElementById('checkmark')
+            const blogList = document.querySelectorAll('#blog-item')
+            const userId = {{ user.id }}
+
+            blogList.forEach(blog => {
+                if (checkmark.checked) {
+                    if (Number(blog.getAttribute('data-user')) !== userId) {
+                        blog.style.display = 'none'
+                    }
+                }
+                else blog.style.display = 'block'
+            })
+        }
+    </script>
+{% endblock content %}

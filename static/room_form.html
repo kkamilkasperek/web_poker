@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nowoczesna Strona</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="styles/navbar.css" rel="stylesheet">
+    <link href="styles/footer.css" rel="stylesheet">
+    <link href="styles/login_register.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="#">
+        <img src="img/dupkso.png" alt="Logo" style="height: 40px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pokoje</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Usługi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Kontakt</a>
+            </li>
+        </ul>
+        <!--        Dla niezalogowanego gościa      -->
+        <button class="btn btn-primary">Zaloguj się</button>
+        <!--    Dla zalogowanego    -->
+        <!-- Dropdown for logged-in user -->
+        <!--        <div class="dropdown">-->
+        <!--            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+        <!--                <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y" alt="Avatar" class="rounded-circle" style="width: 40px; height: 40px; margin-right: 10px;">-->
+        <!--                <span>Użytkownik</span>-->
+        <!--            </a>-->
+        <!--            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">-->
+        <!--                <a class="dropdown-item" href="#">Profil</a>-->
+        <!--                <a class="dropdown-item" href="#">Ustawienia</a>-->
+        <!--                <div class="dropdown-divider"></div>-->
+        <!--                <a class="dropdown-item" href="#">Wyloguj się</a>-->
+        <!--            </div>-->
+        <!--        </div>-->
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="main-content">
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Stwórz Nowy Pokój</h5>
+                        <form>
+                            <div class="form-group">
+                                <label for="roomName">Nazwa pokoju:</label>
+                                <input type="text" class="form-control" id="roomName" placeholder="Wprowadź nazwę pokoju" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="option">Wybierz opcję:</label>
+                                <select class="form-control" id="option" required>
+                                    <option value="" disabled selected>Wybierz opcję</option>
+                                    <option value="1">Opcja 1</option>
+                                    <option value="2">Opcja 2</option>
+                                    <option value="3">Opcja 3</option>
+                                    <!-- Dodaj więcej opcji tutaj -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="maxPlayers">Maksymalna ilość graczy:</label>
+                                <select class="form-control" id="maxPlayers" required>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Status pokoju:</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="roomStatus" id="publicRoom" value="public" checked>
+                                    <label class="form-check-label" for="publicRoom">Publiczny</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="roomStatus" id="privateRoom" value="private">
+                                    <label class="form-check-label" for="privateRoom">Prywatny</label>
+                                </div>
+                            </div>
+                            <div class="form-group" id="passwordField" style="display: none;">
+                                <label for="roomPassword">Hasło zabezpieczające:</label>
+                                <input type="password" class="form-control" id="roomPassword" placeholder="Wprowadź hasło">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Stwórz pokój</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-center">
+    <p>&copy; 2024 Nowoczesna Strona. Wszystkie prawa zastrzeżone.</p>
+    <div>
+        <a href="#" class="mr-3">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" class="mr-3">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" class="mr-3">
+            <i class="fab fa-github"></i>
+        </a>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const privateRoomRadio = document.getElementById('privateRoom');
+        const publicRoomRadio = document.getElementById('publicRoom');
+        const passwordField = document.getElementById('passwordField');
+
+        privateRoomRadio.addEventListener('change', function () {
+            passwordField.style.display = 'block';
+            document.getElementById('roomPassword').setAttribute('required', 'required');
+        });
+
+        publicRoomRadio.addEventListener('change', function () {
+            passwordField.style.display = 'none';
+            document.getElementById('roomPassword').removeAttribute('required');
+        });
+    });
+</script>
+</body>
+</html>

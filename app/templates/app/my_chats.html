@@ -1,0 +1,17 @@
+{% extends "main.html" %}
+
+{% block content %}
+    {% for chat in chats %}
+        <strong>Chat with
+            {% if chat.user1 == user %}
+                {{ chat.user2 }}
+                <a href="{% url 'private-chat' chat.user2.id %}">Go to chat</a>
+            {% else %}
+                {{ chat.user1 }}
+                <a href="{% url 'private-chat' chat.user1.id %}">Go to chat</a>
+            {% endif %}</strong> <br>
+        <span>Last message: {{ chat.message_set.last }}</span> <br>
+        <span>Sent at: {{ chat.message_set.last.timestamp|timesince }}</span>
+        <hr>
+    {% endfor %}
+{% endblock %}

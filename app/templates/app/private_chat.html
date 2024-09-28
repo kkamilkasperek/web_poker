@@ -1,0 +1,65 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+	<h3>Private Chat with {{ receiver }}</h3>
+    {% if chat == None %}
+        <p>You haven't chatted with each other yet
+        </p>
+    {% else %}
+        <ul class="conversation">
+        {% for message in chat.message_set.all %}
+            <li class="{{ message.sender.username }}">
+                <strong>{{ message.sender.username }}:</strong>
+                <span>{{ message.message|linebreaksbr }}</span>
+                <small class="time-since">{{ message.timestamp|timesince }} ago</small>
+            </li>
+            <br>
+         {% endfor %}
+        </ul>
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        <textarea id="messageText" name="message" placeholder="Type your message here"></textarea>
+        <button type="submit">Send</button>
+    </form>
+    <script src="{% static 'app.js' %}"></script>
+    <script>
+        const messageText = document.querySelector('#messageText')
+        messageText.focus()
+        messageText.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" && !event.shiftKey) {
+                event.preventDefault()
+                document.querySelector("form").submit()
+            }
+        })
+
+
+        const conversation = document.querySelector('.conversation')
+        let lastMessageId = {{ chat.message_set.last.id }}
+        const fetchNewMessages = async () => {
+            const response = await fetch(`../../api/chats/{{ chat.id }}/messages/?last_message_id=${lastMessageId}`)
+            const data = await response.json()
+            console.log(data)
+            if (data && data.length > 0) {
+                lastMessageId = data[data.length - 1].id
+                addMessages(data)
+            }
+        }
+        const addMessages = (messages) => {
+            messages.forEach(message => {
+                const li = document.createElement('li')
+                li.classList.add(message.sender)
+                li.innerHTML = `
+                    <strong>${message.sender}:</strong>
+                    <span>${message.message}</span>
+                    <small>${timeSince(message.timestamp)} ago</small>
+                `
+                conversation.appendChild(li)
+                conversation.appendChild(document.createElement('br'))
+
+            })
+        }
+        setInterval(fetchNewMessages, 1000)
+        setInterval(updateTimes, 60000)
+    </script>
+{% endblock %}

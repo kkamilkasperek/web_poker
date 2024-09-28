@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stół Pokerowy</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="styles/navbar.css" rel="stylesheet">
+    <link href="styles/footer.css" rel="stylesheet">
+    <link href="styles/table.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="#">
+        <img src="img/dupkso.png" alt="Logo" style="height: 40px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pokoje</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Usługi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Kontakt</a>
+            </li>
+        </ul>
+        <button class="btn btn-primary">Zaloguj się</button>
+<!--        <div class="dropdown">-->
+<!--            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y" alt="Avatar" class="rounded-circle" style="width: 40px; height: 40px; margin-right: 10px;">-->
+<!--                <span>Użytkownik</span>-->
+<!--            </a>-->
+<!--            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">-->
+<!--                <a class="dropdown-item" href="#">Profil</a>-->
+<!--                <a class="dropdown-item" href="#">Ustawienia</a>-->
+<!--                <div class="dropdown-divider"></div>-->
+<!--                <a class="dropdown-item" href="#">Wyloguj się</a>-->
+<!--            </div>-->
+<!--        </div>-->
+    </div>
+</nav>
+
+<!-- Pasek informacji o pokoju -->
+<div class="container mt-3">
+    <div class="d-flex justify-content-between align-items-center bg-dark p-3 rounded">
+        <div>
+            <h5 class="mb-0">Pokój 1</h5>
+            <p class="mb-0">Ilość graczy: 1 / 5</p>
+        </div>
+        <div>
+            <h5 class="mb-0">Poziom ciemnych</h5>
+            <p class="mb-0">50 / 100</p>
+        </div>
+        <button class="btn btn-success">Dołącz/Odejdź</button>
+    </div>
+</div>
+
+
+<!-- Main Content -->
+<div class="main-content">
+    <div class="poker-table">
+        <div class="player-container" style="top: 10%; left: 50%; transform: translate(-50%, -50%);">
+            <div class="player-cards">
+                <img src="img/playing_cards/reverse2-copy.png" alt="Karta">
+                <img src="img/playing_cards/reverse2-copy.png" alt="Karta">
+            </div>
+            <div class="player-info">
+                <span>Gracz 1</span>
+                <span>Żetony: 1000</span>
+                <span>Zakład: 50</span>
+            </div>
+        </div>
+        <div class="player-container" style="top: 25%; left: 80%; transform: translate(-50%, -50%);">
+            <div class="player-cards">
+                <img src="img/playing_cards/reverse2-copy.png" alt="Karta">
+                <img src="img/playing_cards/reverse2-copy.png" alt="Karta">
+            </div>
+            <div class="player-info">
+                <span>Gracz 2</span>
+                <span>Żetony: 1000</span>
+                <span>Zakład: 50</span>
+            </div>
+        </div>
+        <!-- Dodaj kolejne miejsca dla graczy -->
+        <div class="player-container" style="top: 90%; left: 50%; transform: translate(-50%, -50%);">
+            <div class="player-cards">
+                <img src="img/playing_cards/reverse2-copy.png" alt="Karta">
+                <img src="img/playing_cards/reverse2-copy.png" alt="Karta">
+            </div>
+            <div class="player-info">
+                <span>Gracz 3</span>
+                <span>Żetony: 1000</span>
+                <span>Zakład: 50</span>
+            </div>
+        </div>
+        <div class="player-container" style="top: 50%; left: 90%; transform: translate(-50%, -50%);">
+            <div class="player-cards">
+                <img src="img/playing_cards/reverse2-copy.png" alt="Karta">
+                <img src="img/playing_cards/reverse2-copy.png" alt="Karta">
+            </div>
+            <div class="player-info">
+                <span>Gracz 4</span>
+                <span>Żetony: 1000</span>
+                <span>Zakład: 50</span>
+            </div>
+        </div>
+        <div class="player-container" style="top: 25%; left: 20%; transform: translate(-50%, -50%);">
+            <div class="player-cards">
+                <img src="img/playing_cards/reverse2-copy.png" alt="Karta">
+                <img src="img/playing_cards/reverse2-copy.png" alt="Karta">
+            </div>
+            <div class="player-info">
+                <span>Gracz 5</span>
+                <span>Żetony: 1000</span>
+                <span>Zakład: 50</span>
+            </div>
+        </div>
+        <div class="player-container" style="top: 50%; left: 10%; transform: translate(-50%, -50%);">
+            <div class="player-cards">
+                <img src="img/playing_cards/reverse2-copy.png" alt="Karta">
+                <img src="img/playing_cards/reverse2-copy.png" alt="Karta">
+            </div>
+            <div class="player-info">
+                <span>Gracz 6</span>
+                <span>Żetony: 1000</span>
+                <span>Zakład: 50</span>
+            </div>
+        </div>
+        <div class="player-container" style="top: 75%; left: 20%; transform: translate(-50%, -50%);">
+            <div class="player-cards">
+                <img src="img/playing_cards/reverse2-copy.png" alt="Karta">
+                <img src="img/playing_cards/reverse2-copy.png" alt="Karta">
+            </div>
+            <div class="player-info">
+                <span>Gracz 7</span>
+                <span>Żetony: 1000</span>
+                <span>Zakład: 50</span>
+            </div>
+        </div>
+        <div class="player-container" style="top: 75%; left: 80%; transform: translate(-50%, -50%);">
+            <div class="player-cards">
+                <img src="img/playing_cards/red_joker.png" alt="Karta">
+                <img src="img/playing_cards/reverse2-copy.png" alt="Karta">
+            </div>
+            <div class="player-info">
+                <span>Gracz 8</span>
+                <span>Żetony: 1000</span>
+                <span>Zakład: 50</span>
+            </div>
+        </div>
+
+        <div class="center-cards">
+            <img src="img/playing_cards/2_of_diamonds.png" alt="Karta">
+            <img src="img/playing_cards/reverse2-copy.png" alt="Karta">
+            <img src="img/playing_cards/reverse2-copy.png" alt="Karta">
+            <img src="img/playing_cards/reverse2-copy.png" alt="Karta">
+            <img src="img/playing_cards/reverse2-copy.png" alt="Karta">
+        </div>
+    </div>
+    <div class="action-panel">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <div>
+                <strong>Żetony:</strong> <span id="playerChips">1000</span>
+            </div>
+            <div>
+                <strong>Aktualny układ:</strong> <span id="playerHand">Para Asów</span>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <button class="btn btn-primary">Check</button>
+            <button class="btn btn-danger">Fold</button>
+            <button class="btn btn-warning">Raise</button>
+            <input type="range" min="0" max="1000" step="10" class="form-control-range mx-2" style="flex: 1;">
+            <input type="number" class="form-control" placeholder="Kwota" style="width: 100px;">
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Footer -->
+<footer class="text-center">
+    <p>&copy; 2024 Nowoczesna Strona. Wszystkie prawa zastrzeżone.</p>
+    <div>
+        <a href="#" class="mr-3">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" class="mr-3">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

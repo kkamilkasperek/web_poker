@@ -1,0 +1,12 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <h3>{{ blog.title }}</h3>
+    <small>Post created at {{ blog.created_at }} by <a href="{% url 'profile' blog.user.id %}">{{ blog.user }}</a></small>
+    <br>
+    {% if user == blog.user %}
+    <a href="{% url 'blog-edit' blog.id %}">Edit</a> <a href="{% url 'blog-delete' blog.id %}">Delete</a>
+    {% endif %}
+    <hr>
+    <p>{{ blog.content|linebreaksbr }}</p>
+{% endblock %}

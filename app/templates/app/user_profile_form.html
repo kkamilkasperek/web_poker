@@ -1,0 +1,12 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <h3>Edit profile</h3>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form_profile.as_p }}
+        <hr>
+        {{ form_password.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}

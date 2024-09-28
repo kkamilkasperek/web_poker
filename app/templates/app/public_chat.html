@@ -1,0 +1,62 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+    <h1>Public Chat</h1>
+    <ul class="conversation">
+        {% for message in messages %}
+            <li class="message">
+                <strong>{{ message.sender }}</strong>
+                <span>{{ message.message }}</span>
+                <small class="time-since">{{ message.timestamp|timesince }} ago</small>
+            </li>
+            <br>
+         {% endfor %}
+        </ul>
+    <form method="POST" class="form">
+        {% csrf_token %}
+        <input type="text" id="chat-input" autocomplete="off"/>
+        <button type="submit">Send</button>
+    </form>
+    <script src="{% static 'app.js' %}"></script>
+    <script>
+        const sender = "{{ user.username }}"
+        const chatSocket = new WebSocket("ws://{{ request.get_host }}/ws/public-chat")
+
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data)
+            const message = data['message']
+            const sender = data['sender']
+            const timestamp = data['timestamp']
+            // console.log(timestamp)
+            if (message) {
+                const messageElement = document.createElement('li')
+                messageElement.className = 'message'
+                messageElement.innerHTML = `
+                    <strong>${sender}</strong>
+                    <span>${message}</span>
+                    <small class="time-since">0 minutes ago</small>
+                `
+                document.querySelector('.conversation').appendChild(messageElement)
+                document.querySelector('.conversation').appendChild(document.createElement('br'))
+            }
+        }
+
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        }
+
+        const form = document.querySelector('.form')
+        document.querySelector("#chat-input").focus()
+        form.onsubmit = (e) => {
+            e.preventDefault()
+            const messageInputDom = document.querySelector('#chat-input')
+            const message = messageInputDom.value
+            chatSocket.send(JSON.stringify({
+                'sender': sender,
+                'message': message
+            }))
+            messageInputDom.value = ''
+        }
+        setInterval(updateTimes, 60000)
+    </script>
+{% endblock %}

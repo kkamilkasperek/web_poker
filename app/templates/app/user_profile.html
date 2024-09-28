@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <h1>User Profile</h1>
+    <img src="{{ query_user.profile_picture.url }}" alt="Profile Picture">
+    <h3>{{ query_user.username }} Profile</h3>
+    {% if query_user.id == user.id %}
+        <a href="{% url 'profile-edit' %}">Edit profile</a>
+        <a href="{% url 'my-chats' %}">My chats</a>
+    {% else %}
+        <a href="{% url 'private-chat' query_user.id %}">Send message</a>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona Logowania</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <link rel="stylesheet" href="styles/login_register.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="#">
+        <img src="img/dupkso.png" alt="Logo" style="height: 40px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pokoje</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Usługi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Kontakt</a>
+            </li>
+        </ul>
+        <!--        Dla niezalogowanego gościa      -->
+        <button class="btn btn-primary">Zaloguj się</button>
+        <!--    Dla zalogowanego    -->
+        <!-- Dropdown for logged-in user -->
+        <!--        <div class="dropdown">-->
+        <!--            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+        <!--                <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y" alt="Avatar" class="rounded-circle" style="width: 40px; height: 40px; margin-right: 10px;">-->
+        <!--                <span>Użytkownik</span>-->
+        <!--            </a>-->
+        <!--            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">-->
+        <!--                <a class="dropdown-item" href="#">Profil</a>-->
+        <!--                <a class="dropdown-item" href="#">Ustawienia</a>-->
+        <!--                <div class="dropdown-divider"></div>-->
+        <!--                <a class="dropdown-item" href="#">Wyloguj się</a>-->
+        <!--            </div>-->
+        <!--        </div>-->
+    </div>
+</nav>
+
+<!-- Main Content -->
+<!--For login-->
+<div class="main-content">
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Zaloguj się</h5>
+                        <form>
+                            <div class="form-group">
+                                <label for="email">Email lub nazwa użytkownika:</label>
+                                <input type="email" class="form-control" id="email" placeholder="Wprowadź email lub nazwę użytkownika" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Hasło:</label>
+                                <input type="password" class="form-control" id="password" placeholder="Wprowadź hasło" required>
+                            </div>
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">Zapamiętaj mnie</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Zaloguj się</button>
+                        </form>
+                        <p class="text-center mt-3">
+                            <a href="#">Zapomniałeś hasła?</a>
+                        </p>
+                        <p class="text-center">
+                            <a href="#">Nie masz konta? Zarejestruj się</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--For registration-->
+<div class="main-content">
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Zarejestruj się</h5>
+                        <form>
+                            <div class="form-group">
+                                <label for="username2">Nazwa użytkownika:</label>
+                                <input type="text" class="form-control" id="username2" placeholder="Wprowadź nazwę użytkownika" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" id="email2" placeholder="Wprowadź email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Hasło:</label>
+                                <input type="password" class="form-control" id="password2" placeholder="Wprowadź hasło" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Potwierdź hasło:</label>
+                                <input type="password" class="form-control" id="confirmPassword" placeholder="Potwierdź hasło" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Zarejestruj się</button>
+                        </form>
+                        <p class="text-center mt-3">
+                            <a href="#">Masz już konto? Zaloguj się</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-center">
+    <p>&copy; 2024 Nowoczesna Strona. Wszystkie prawa zastrzeżone.</p>
+    <div>
+        <a href="#" class="mr-3">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" class="mr-3">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" class="mr-3">
+            <i class="fab fa-github"></i>
+        </a>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

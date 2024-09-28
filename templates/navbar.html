@@ -1,0 +1,20 @@
+<nav>
+    <a href="{% url 'index' %}">
+    <h1>LOGO</h1>
+</a>
+    <ul>
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'blogs' %}">Blogs</a></li>
+        <li><a href="{% url 'public-chat' %}">Public Chat</a></li>
+        <li><a href="{% url 'poker-rooms' %}">Poker</a></li>
+    </ul>
+    {% if user.is_authenticated %}
+        <span>Welcome {{ user.username }}!</span>
+        <a href="{% url 'profile' user.id %}">Your profile</a>
+        <br>
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+</nav>
+<hr>
