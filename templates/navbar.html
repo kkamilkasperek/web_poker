@@ -7,6 +7,7 @@
         <li><a href="{% url 'blogs' %}">Blogs</a></li>
         <li><a href="{% url 'public-chat' %}">Public Chat</a></li>
         <li><a href="{% url 'poker-rooms' %}">Poker</a></li>
+        <li><a href="{% url 'bridge' %}">Bridge</a></li>
     </ul>
     {% if user.is_authenticated %}
         <span>Welcome {{ user.username }}!</span>

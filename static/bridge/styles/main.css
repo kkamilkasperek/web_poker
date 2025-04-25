@@ -1,0 +1,27 @@
+body {
+    background: url('./img/pokerbg_generated.jpg') no-repeat center center;
+    background-size: cover;
+    /* color: white; */
+    height: calc(100vh - 56px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.table {
+    position: absolute;
+    top: 20vh;
+    bottom: 20vh;
+    left: 20vw;
+    right: 20vw;
+  
+    /* background-color: #0453257b; */
+    border-radius: 30%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }

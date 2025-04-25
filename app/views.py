@@ -211,3 +211,7 @@ def leave_poker(request, pk):
 def remove_user_from_rooms(request):
     RoomUser.objects.filter(user=request.user).delete()
     return JsonResponse({"status": "ok"})
+
+
+def bridge(request):
+    return render(request, "app/bridge/index_generated.html")

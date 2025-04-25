@@ -20,5 +20,7 @@ urlpatterns = [
     path("poker-form", views.create_poker, name="poker-form"),
     path("poker-room/<str:pk>", views.poker_room, name="poker-room"),
     path("join-poker/<str:pk>", views.join_poker, name="join-poker"),
-    path("leave-poker/<str:pk>", views.leave_poker, name="leave-poker")
+    path("leave-poker/<str:pk>", views.leave_poker, name="leave-poker"),
+
+    path("bridge", views.bridge, name="bridge"),
 ]
